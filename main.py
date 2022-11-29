@@ -53,7 +53,6 @@ def change_headers(df,headers_needed):
 st.sidebar.header("Upload a file")
 
 uploaded_file = st.sidebar.file_uploader("Choose a file",type=["csv","xlsx"])
-st.sidebar.write(st.session_state)
 
 # Main body
 
@@ -105,27 +104,16 @@ with st.container():
       
         with st.expander("Make amendments",expanded=True):
                                
-            headers_needed = st.multiselect("Headers filter",data_headers,default=data_headers)
+            headers_needed = st.multiselect("Headers filter (default first 5 columns)",data_headers,default=data_headers[:5])
             
             #Rename headers
-            # with st.form("rename",clear_on_submit=True):
-            #     "###### Rename headers"
-            #     left,right = st.columns(2)
-                
-            #     old_name = left.selectbox("Old name",headers_needed)
-            #     new_name = right.text_input("New name",placeholder="Input")
-                
-            #     change_name = st.form_submit_button("Apply change")
-            #     if change_name:
-            #         dataframe.rename(columns={old_name: new_name},inplace=True, errors='raise')
- 
-            #         st.experimental_rerun()
-            # change_headers(dataframe,headers_needed)
+            change_headers(dataframe,headers_needed)
             
             # query
             with st.form("query",clear_on_submit=False):
                 query_selected = {} 
                 data_selection = dataframe  
+                
                 for header in headers_needed:
 
                     title = st.multiselect(
@@ -174,8 +162,8 @@ with st.container():
                 mime='text/csv',
             )           
         
-        with st.expander("Plot Graph",expanded=True): 
-            "## Plot Graph  - still testing"
+        with st.expander("Plot Graph - still testing",expanded=False): 
+            "## Plot Graph"
             groupby = st.multiselect("Groupby (default=mean)",headers_needed,default=None,key=2)
                 
             Agg = st.text_area("Aggregations if any: ",placeholder="e.g.: a:mean,b:sum,c:size")
