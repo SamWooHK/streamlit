@@ -5,7 +5,6 @@ from io import StringIO
 import math
 import time
 import os
-import plotly
 import plotly.express as px
 
 #page setting
