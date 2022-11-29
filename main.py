@@ -70,7 +70,7 @@ with intro.container():
     """
     
 
-    st.image("./assets/main.jpg",width=300)
+    st.image("main.jpg",width=300)
 
 #Read data
 
