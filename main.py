@@ -117,8 +117,8 @@ with st.container():
 
                     title = st.multiselect(
                     f"Select the {header}:",
-                    options=sorted(dataframe[header].unique()),
-                    default=sorted(dataframe[header].unique()))
+                    options=dataframe[header].unique(),
+                    default=dataframe[header].unique())
                     query_selected[header] = title
                     
                 query_con = " & ".join(f"{key} == {value}" for key,value in query_selected.items())    
