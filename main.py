@@ -5,7 +5,6 @@ import numpy as np
 import os
 import plotly.express as px
 
-sc = StandardScaler()
 #page setting
 st.set_page_config(page_title="Simple Data Manipulation",page_icon="📔",layout="wide")
 
